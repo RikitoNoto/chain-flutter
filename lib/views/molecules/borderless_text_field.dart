@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
 
+class BorderlessFormTextField extends StatelessWidget {
 
-class BorderlessTextField extends StatefulWidget {
-  const BorderlessTextField({
+  const BorderlessFormTextField({
     super.key,
+    required this.name,
     this.labelText,
     this.contentPadding,
     this.textInputAction,
-    this.onChanged,
     this.inputFormatters,
     this.keyboardType,
     this.initialValue,
@@ -17,12 +18,13 @@ class BorderlessTextField extends StatefulWidget {
     this.height,
     this.width,
     this.labelFontSize,
+    this.validator,
   });
 
+  final String name;
   final String? labelText;
   final EdgeInsetsGeometry? contentPadding;
   final TextInputAction? textInputAction;
-  final Function(String)? onChanged;
   final List<TextInputFormatter>? inputFormatters;
   final TextInputType? keyboardType;
   final String? initialValue;
@@ -31,34 +33,31 @@ class BorderlessTextField extends StatefulWidget {
   final double? height;
   final double? width;
   final double? labelFontSize;
+  final String? Function(String?)? validator;
 
-  @override
-  State<BorderlessTextField> createState() => _BorderlessTextField();
-}
-
-class _BorderlessTextField extends State<BorderlessTextField> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: widget.height,
-      width: widget.width,
-      child: TextField(
-        onChanged: widget.onChanged,
-        inputFormatters: widget.inputFormatters,
-        keyboardType: widget.keyboardType,
-        controller: widget.initialValue != null ? TextEditingController(text: widget.initialValue) : null,
-        textInputAction: widget.textInputAction,
+      height: height,
+      width: width,
+      child: FormBuilderTextField(
+        name: name,
+        validator: validator,
+        inputFormatters: inputFormatters,
+        keyboardType: keyboardType,
+        controller: initialValue != null ? TextEditingController(text: initialValue) : null,
+        textInputAction: textInputAction,
         decoration: InputDecoration(
-          labelText: widget.labelText,
+          labelText: labelText,
           labelStyle: TextStyle(
-            fontSize: widget.labelFontSize,
+            fontSize: labelFontSize,
           ),
-          contentPadding: widget.contentPadding,
+          contentPadding: contentPadding,
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(widget.borderRadius),
+            borderRadius: BorderRadius.circular(borderRadius),
             borderSide: BorderSide.none,
           ),
-          fillColor: widget.fillColor,
+          fillColor: fillColor,
           filled: true,
         ),
       ),
