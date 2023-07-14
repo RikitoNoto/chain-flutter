@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:chain_flutter/views/molecules/borderless_text_field.dart';
+import 'package:chain_flutter/controllers/login_controller.dart';
 
 @RoutePage()
-class LoginPage extends StatelessWidget {
+class LoginPage extends ConsumerWidget  {
   const LoginPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final double contentWidth = MediaQuery.of(context).size.width * 0.7;
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
@@ -31,7 +33,7 @@ class LoginPage extends StatelessWidget {
               SizedBox(
                 width: contentWidth,
                 child: ElevatedButton(
-                  onPressed: ()=>{},
+                  onPressed: ()=> ref.read(loginControllerProvider).login("", ""),
                   style: ElevatedButton.styleFrom(
                     elevation: 0.0,
                     backgroundColor: const Color(0xFFFA8072),
