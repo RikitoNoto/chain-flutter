@@ -51,7 +51,7 @@ class LoginPage extends ConsumerWidget  {
                   child: ElevatedButton(
                     onPressed: (){
                       if(_formKey.currentState?.saveAndValidate() ?? false){
-                        ref.read(loginControllerProvider).login("", "");
+                        ref.read(loginControllerProvider).login(_formKey.currentState?.value['email'], _formKey.currentState?.value['password']);
                       }
                     },
                     style: ElevatedButton.styleFrom(

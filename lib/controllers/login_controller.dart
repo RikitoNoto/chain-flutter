@@ -1,5 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import 'package:chain_flutter/entities/user.dart';
+import 'package:chain_flutter/repositories/api_repository.dart';
 
 
 final loginControllerProvider = Provider((ref) {
@@ -10,7 +12,10 @@ class LoginController{
   LoginController({required this.ref});
   final ProviderRef ref;
 
-  Future login(String email, String password) async{
-
+  Future login(String email, String password) async {
+    final api = ApiRepository();
+    // String token = await api.login(email, password);
+    // print(token);
+    // return ;
   }
 }
