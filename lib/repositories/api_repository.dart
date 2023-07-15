@@ -30,6 +30,21 @@ class ApiRepositoryHttp implements ApiRepository {
       "password": password,
     });
     final body = jsonDecode(response.body);
+
+    // エラーコードを確認
+    switch(response.statusCode){
+      case 401:
+        throw UnauthorizedException("wrong email or password.\n\temail: $email\n\tpassword: $password");
+    }
+
     return Token(access: body["access"], refresh: body["refresh"]);
   }
+}
+
+class UnauthorizedException implements Exception{
+  final String message;
+  UnauthorizedException(this.message,);
+
+  @override
+  String toString() => message;
 }

@@ -1,3 +1,4 @@
+import 'package:chain_flutter/values/token.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:chain_flutter/entities/user.dart';
@@ -14,8 +15,8 @@ class LoginController{
 
   Future login(String email, String password) async {
     final api = ApiRepository();
-    // String token = await api.login(email, password);
-    // print(token);
+    Token token = await api.login(email, password);
+    print(token);
     // return ;
   }
 }

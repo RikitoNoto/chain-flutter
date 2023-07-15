@@ -63,12 +63,10 @@ void loginTest(){
       expect(token.refresh, "2");
     });
 
-    test('should return tokens after success to call a login method', () async {
-      PostFunc postMock = createPostMock(status: 200, bodyData: '{"access": "1", "refresh": "2"}');
+    test('should throw exception after return 401 error', () async {
+      PostFunc postMock = createPostMock(status: 401, bodyData: '{"detail":"No active account found with the given credentials"}');
       final api = ApiRepositoryHttp(get: createGetMock(), post: postMock);
-      Token token = await api.login("email", "password");
-      expect(token.access, "1");
-      expect(token.refresh, "2");
+      expect(() async {await api.login("email", "password");}, throwsA(const TypeMatcher<UnauthorizedException>()));
     });
   });
 }
