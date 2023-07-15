@@ -7,9 +7,8 @@ import 'package:chain_flutter/controllers/login_controller.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 
-final loginErrorMessageProvider = StateProvider<String>((ref){
-  return "";
-});
+final errorMessageProvider = StateProvider<String>((ref)=>"");
+final passwordVisibleProvider = StateProvider<bool>((ref)=>false);
 
 @RoutePage()
 class LoginPage extends ConsumerWidget  {
@@ -46,12 +45,18 @@ class LoginPage extends ConsumerWidget  {
                 ),
                 _buildTextField(
                   name: "password", contentWidth: contentWidth, labelText: "パスワード",
+                  obscureText: !ref.watch(passwordVisibleProvider),
+                  suffixIcon: IconButton(
+                    splashRadius: 0.1,
+                    onPressed: ()=>ref.read(passwordVisibleProvider.notifier).state = !ref.watch(passwordVisibleProvider),
+                    icon: Icon(ref.watch(passwordVisibleProvider) ? Icons.visibility : Icons.visibility_off),
+                  ),
                   validator: FormBuilderValidators.compose([
                     FormBuilderValidators.required(),
                   ]),
                 ),
                 Text(
-                  ref.watch(loginErrorMessageProvider),
+                  ref.watch(errorMessageProvider),
                   style: const TextStyle(
                     color: Colors.red,
                     fontSize: 12,
@@ -61,11 +66,11 @@ class LoginPage extends ConsumerWidget  {
                   width: contentWidth,
                   child: ElevatedButton(
                     onPressed: () async {
-                      ref.read(loginErrorMessageProvider.notifier).state = "";
+                      ref.read(errorMessageProvider.notifier).state = "";
                       if(_formKey.currentState?.saveAndValidate() ?? false){
                         final result = await ref.read(loginControllerProvider).login(_formKey.currentState?.value['email'], _formKey.currentState?.value['password']);
                         if(result == LoginResult.invalidUser){
-                          ref.read(loginErrorMessageProvider.notifier).state = "メールアドレスかパスワードが間違っています。";
+                          ref.read(errorMessageProvider.notifier).state = "メールアドレスかパスワードが間違っています。";
                         }
                       }
                     },
@@ -93,7 +98,7 @@ class LoginPage extends ConsumerWidget  {
     );
   }
 
-  Widget _buildTextField({required double contentWidth, required String labelText, required String name, String? Function(String?)? validator}){
+  Widget _buildTextField({required double contentWidth, required String labelText, required String name, bool obscureText = false, Widget? suffixIcon, String? Function(String?)? validator}){
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10),
       child: BorderlessFormTextField(
@@ -105,6 +110,8 @@ class LoginPage extends ConsumerWidget  {
         fillColor: Colors.white,
         width: contentWidth,
         height: 50,
+        obscureText: obscureText,
+        suffixIcon: suffixIcon,
       ),
     );
   }
