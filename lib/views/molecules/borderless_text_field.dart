@@ -19,6 +19,8 @@ class BorderlessFormTextField extends StatelessWidget {
     this.width,
     this.labelFontSize,
     this.validator,
+    this.obscureText = false,
+    this.suffixIcon,
   });
 
   final String name;
@@ -34,6 +36,8 @@ class BorderlessFormTextField extends StatelessWidget {
   final double? width;
   final double? labelFontSize;
   final String? Function(String?)? validator;
+  final bool obscureText;
+  final Widget? suffixIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -45,6 +49,7 @@ class BorderlessFormTextField extends StatelessWidget {
         validator: validator,
         inputFormatters: inputFormatters,
         keyboardType: keyboardType,
+        obscureText: obscureText,
         controller: initialValue != null ? TextEditingController(text: initialValue) : null,
         textInputAction: textInputAction,
         decoration: InputDecoration(
@@ -59,6 +64,7 @@ class BorderlessFormTextField extends StatelessWidget {
           ),
           fillColor: fillColor,
           filled: true,
+          suffixIcon: suffixIcon,
         ),
       ),
     );
