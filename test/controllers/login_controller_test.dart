@@ -1,11 +1,11 @@
-import 'package:chain_flutter/controllers/login_controller.dart';
+import 'package:chain/controllers/login_controller.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:mockito/annotations.dart';
 
-import 'package:chain_flutter/repositories/api_repository.dart';
-import 'package:chain_flutter/values/token.dart';
+import 'package:chain/repositories/api_repository.dart';
+import 'package:chain/values/token.dart';
 import 'login_controller_test.mocks.dart';
 
 
