@@ -1,10 +1,10 @@
 import 'dart:convert';
 
-import 'package:chain_flutter/values/token.dart';
+import 'package:chain/values/token.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart';
 
-import 'package:chain_flutter/repositories/api_repository.dart';
+import 'package:chain/repositories/api_repository.dart';
 
 typedef PostFunc = Future<Response> Function(
   Uri url, {

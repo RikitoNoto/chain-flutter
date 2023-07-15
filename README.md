@@ -1,4 +1,4 @@
-# chain_flutter
+# chain
 
 A new Flutter project.
 

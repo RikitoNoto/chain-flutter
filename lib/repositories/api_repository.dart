@@ -1,7 +1,7 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-import 'package:chain_flutter/values/token.dart';
+import 'package:chain/values/token.dart';
 
 abstract class ApiRepository {
   factory ApiRepository(){

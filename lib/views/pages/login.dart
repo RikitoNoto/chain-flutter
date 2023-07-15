@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:chain_flutter/views/molecules/borderless_text_field.dart';
-import 'package:chain_flutter/controllers/login_controller.dart';
+import 'package:chain/views/molecules/borderless_text_field.dart';
+import 'package:chain/controllers/login_controller.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 
@@ -33,7 +33,7 @@ class LoginPage extends ConsumerWidget  {
                   width: contentWidth / 3,
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(35),
-                    child: Image.asset('assets/images/chain_icon.png'),
+                    child: Image.asset('assets/icons/app_icon.png'),
                   ),
                 ),
                 _buildTextField(

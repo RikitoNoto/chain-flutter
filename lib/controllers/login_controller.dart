@@ -1,9 +1,9 @@
-import 'package:chain_flutter/values/token.dart';
+import 'package:chain/values/token.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:chain_flutter/entities/user.dart';
-import 'package:chain_flutter/repositories/api_repository.dart';
+import 'package:chain/entities/user.dart';
+import 'package:chain/repositories/api_repository.dart';
 
 
 final loginControllerProvider = Provider((ref) {

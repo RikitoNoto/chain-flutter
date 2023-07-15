@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
-import 'package:chain_flutter/views/pages/login.dart';
+import 'package:chain/views/pages/login.dart';
 
 part 'router.gr.dart';
 
