@@ -7,6 +7,10 @@ import 'package:chain_flutter/controllers/login_controller.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 
+final loginErrorMessageProvider = StateProvider<String>((ref){
+  return "";
+});
+
 @RoutePage()
 class LoginPage extends ConsumerWidget  {
   LoginPage({super.key});
@@ -46,12 +50,23 @@ class LoginPage extends ConsumerWidget  {
                     FormBuilderValidators.required(),
                   ]),
                 ),
+                Text(
+                  ref.watch(loginErrorMessageProvider),
+                  style: const TextStyle(
+                    color: Colors.red,
+                    fontSize: 12,
+                  ),
+                ),
                 SizedBox(
                   width: contentWidth,
                   child: ElevatedButton(
-                    onPressed: (){
+                    onPressed: () async {
+                      ref.read(loginErrorMessageProvider.notifier).state = "";
                       if(_formKey.currentState?.saveAndValidate() ?? false){
-                        ref.read(loginControllerProvider).login(_formKey.currentState?.value['email'], _formKey.currentState?.value['password']);
+                        final result = await ref.read(loginControllerProvider).login(_formKey.currentState?.value['email'], _formKey.currentState?.value['password']);
+                        if(result == LoginResult.invalidUser){
+                          ref.read(loginErrorMessageProvider.notifier).state = "メールアドレスかパスワードが間違っています。";
+                        }
                       }
                     },
                     style: ElevatedButton.styleFrom(
