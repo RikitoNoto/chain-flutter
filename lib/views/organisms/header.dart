@@ -1,11 +1,9 @@
-
-
 import 'package:flutter/material.dart';
 
-class Header extends StatelessWidget implements PreferredSizeWidget{
+class Header extends StatelessWidget implements PreferredSizeWidget {
   const Header({
     key,
-  }): super(key: key);
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,13 +22,12 @@ class Header extends StatelessWidget implements PreferredSizeWidget{
               "Chain",
               style: TextStyle(
                 color: Color(0xFFFA8072),
+                fontWeight: FontWeight.bold,
               ),
             ),
           ),
-
         ],
       ),
-
     );
   }
 

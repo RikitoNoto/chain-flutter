@@ -4,19 +4,23 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:chain/views/organisms/header.dart';
 
-
 @RoutePage()
-class HomePage extends ConsumerWidget  {
+class HomePage extends ConsumerWidget {
   HomePage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Scaffold(
+    return const Scaffold(
       appBar: Header(),
-      backgroundColor: const Color(0xFFFFFAF0),
-
-      body: Center(),
-      );
+      backgroundColor: Color(0xFFE6E6E6),
+      body: Center(
+        child: Text(
+          "ユーザーやタグをフォローして、\n知識を表示しましょう",
+          style: TextStyle(
+            color: Color(0xFF909090),
+          ),
+        ),
+      ),
+    );
   }
-
 }
