@@ -8,43 +8,50 @@ import 'package:chain/repositories/api_repository.dart';
 import 'package:chain/values/token.dart';
 import 'login_controller_test.mocks.dart';
 
-
 @GenerateNiceMocks([MockSpec<ApiRepository>()])
 @GenerateNiceMocks([MockSpec<ProviderRef>()])
 @GenerateNiceMocks([MockSpec<Token>()])
 void main() {
-  setUpAll((){
-  });
+  setUpAll(() {});
 
-  setUp(() async{
-  });
+  setUp(() async {});
 
-  tearDown(() async{
-  });
+  tearDown(() async {});
 
   loginTest();
 }
 
-class LoginControllerSpy extends LoginController{
-  LoginControllerSpy({required ref, required this.api}): super(ref: ref);
-  final ApiRepository api;
+class LoginControllerSpy extends LoginController {
+  LoginControllerSpy({required ref, required ApiRepository api})
+      : _api = api,
+        super(ref: ref);
+  final ApiRepository _api;
+  @override
+  ApiRepository get api => _api;
 }
 
-void loginTest(){
+void loginTest() {
   group('login test', () {
     test('should return success when login controller return token', () async {
       MockApiRepository apiMock = MockApiRepository();
-      final loginController = LoginControllerSpy(api: apiMock, ref: MockProviderRef());
-      when(apiMock.login(any, any)).thenAnswer((_)=>Future.value(MockToken()));
-      final LoginResult result = await loginController.login("email", "password");
+      final loginController =
+          LoginControllerSpy(api: apiMock, ref: MockProviderRef());
+      when(apiMock.login(any, any))
+          .thenAnswer((_) => Future.value(MockToken()));
+      final LoginResult result =
+          await loginController.login("email", "password");
       expect(result, LoginResult.success);
     });
 
-    test('should return invalidUser when occur UnauthorizedException', () async {
+    test('should return invalidUser when occur UnauthorizedException',
+        () async {
       MockApiRepository apiMock = MockApiRepository();
-      final loginController = LoginControllerSpy(api: apiMock, ref: MockProviderRef());
-      when(apiMock.login(any, any)).thenAnswer((_)=> throw UnauthorizedException("message"));
-      final LoginResult result = await loginController.login("email", "password");
+      final loginController =
+          LoginControllerSpy(api: apiMock, ref: MockProviderRef());
+      when(apiMock.login(any, any))
+          .thenAnswer((_) => throw UnauthorizedException("message"));
+      final LoginResult result =
+          await loginController.login("email", "password");
       expect(result, LoginResult.invalidUser);
     });
   });

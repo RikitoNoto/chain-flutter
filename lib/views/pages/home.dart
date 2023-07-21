@@ -6,7 +6,7 @@ import 'package:chain/views/organisms/header.dart';
 
 @RoutePage()
 class HomePage extends ConsumerWidget {
-  HomePage({super.key});
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

@@ -1,30 +1,27 @@
-import 'package:chain/values/token.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:chain/entities/user.dart';
 import 'package:chain/repositories/api_repository.dart';
-
 
 final loginControllerProvider = Provider((ref) {
   return LoginController(ref: ref);
 });
 
-enum LoginResult{
+enum LoginResult {
   success,
   invalidUser,
 }
 
-class LoginController{
+class LoginController {
   LoginController({required this.ref});
   final ProviderRef ref;
-  @visibleForTesting final api = ApiRepository();
+  @visibleForTesting
+  final api = ApiRepository();
 
   Future<LoginResult> login(String email, String password) async {
-    try{
-      Token token = await api.login(email, password);
-    }
-    on UnauthorizedException catch(e){
+    try {
+      await api.login(email, password);
+    } on UnauthorizedException catch (_) {
       return LoginResult.invalidUser;
     }
 
