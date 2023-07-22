@@ -3,7 +3,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:chain/views/organisms/header.dart';
-import 'package:chain/views/organisms/bottom_navigation_bar.dart';
 
 @RoutePage()
 class HomePage extends ConsumerWidget {
@@ -14,7 +13,6 @@ class HomePage extends ConsumerWidget {
     return const Scaffold(
       appBar: Header(),
       backgroundColor: Color(0xFFE6E6E6),
-      bottomNavigationBar: ChainNavigationBar(),
       body: Center(
         child: Text(
           "ユーザーやタグをフォローして、\n知識を表示しましょう",

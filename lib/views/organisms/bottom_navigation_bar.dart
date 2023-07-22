@@ -13,17 +13,17 @@ class ChainNavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return NavigationBar(
+      labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
       backgroundColor: Colors.white,
       selectedIndex: selectedIndex,
       height: kBottomNavigationBarHeight,
+      indicatorColor: Colors.white,
       destinations: [
-        const NavigationDestination(
-          icon: Icon(Icons.home),
-          label: 'ホーム',
+        _buildDestinationIcon(
+          Icons.home,
         ),
-        const NavigationDestination(
-          icon: Icon(Icons.search),
-          label: 'さがす',
+        _buildDestinationIcon(
+          Icons.search,
         ),
         Ink(
           decoration: const BoxDecoration(
@@ -37,16 +37,29 @@ class ChainNavigationBar extends StatelessWidget {
             onPressed: () => {},
           ),
         ),
-        const NavigationDestination(
-          icon: Icon(Icons.notifications),
-          label: '通知',
+        _buildDestinationIcon(
+          Icons.notifications,
         ),
-        const NavigationDestination(
-          icon: Icon(Icons.account_circle),
-          label: 'プロフィール',
+        _buildDestinationIcon(
+          Icons.account_circle,
         ),
       ],
       onDestinationSelected: onDestinationSelected,
+    );
+  }
+
+  NavigationDestination _buildDestinationIcon(IconData icon,
+      {String label = ''}) {
+    return NavigationDestination(
+      selectedIcon: Icon(
+        icon,
+        color: const Color(0xFF505050),
+      ),
+      icon: Icon(
+        icon,
+        color: const Color(0xFFB0B0B0),
+      ),
+      label: label,
     );
   }
 }
