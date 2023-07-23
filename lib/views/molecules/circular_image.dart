@@ -18,7 +18,7 @@ class CircularImage extends StatelessWidget {
           )
         : null;
 
-    final icon = backgroundImage == null ? Icon(Icons.face) : null;
+    final icon = backgroundImage == null ? const Icon(Icons.face) : null;
 
     return Container(
       decoration: BoxDecoration(
