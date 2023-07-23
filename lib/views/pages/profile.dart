@@ -21,9 +21,10 @@ class UserProfilePage extends StatelessWidget {
           ),
         ),
       ),
+      backgroundColor: Colors.white,
       body: Column(
         children: [
-          // profile pain
+          //profile pain
           Column(
             children: [
               // profile
@@ -48,6 +49,7 @@ class UserProfilePage extends StatelessWidget {
                         "because i'm very very very very very very very very very very very very very very very very very very very very very very cute.\n"
                         "hehehe.\n",
                         overflow: TextOverflow.fade,
+                        maxLines: 7,
                       ),
                     ),
                   ),
@@ -69,10 +71,42 @@ class UserProfilePage extends StatelessWidget {
             ],
           ),
           // post, favorite pain
-          Expanded(
-            child: Container(
-              decoration: BoxDecoration(
-                color: Colors.blue,
+          DefaultTabController(
+            length: 2, // タブの数
+            child: Flexible(
+              child: Column(
+                children: [
+                  const TabBar(
+                    tabs: [
+                      Tab(
+                        height: 30,
+                        child: Text(
+                          '投稿',
+                          style: TextStyle(color: Colors.black),
+                        ),
+                      ),
+                      Tab(
+                        height: 30,
+                        child: Text(
+                          'お気に入り',
+                          style: TextStyle(color: Colors.black),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Flexible(
+                      child: Container(
+                    decoration: const BoxDecoration(
+                      color: Color(0xFFF1F1F1),
+                    ),
+                    child: const TabBarView(
+                      children: [
+                        Center(child: Text('Home Content')),
+                        Center(child: Text('Search Content')),
+                      ],
+                    ),
+                  )),
+                ],
               ),
             ),
           ),
