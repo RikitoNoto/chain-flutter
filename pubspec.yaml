@@ -11,6 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
   auto_route: ^7.7.0
+  cached_network_image: ^3.2.3
   cupertino_icons: ^1.0.2
   flutter_riverpod: ^2.3.6
   flutter_form_builder: ^9.0.0
