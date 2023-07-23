@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:chain/views/pages/login.dart';
 import 'package:chain/views/pages/main.dart';
 import 'package:chain/views/pages/home.dart';
+import 'package:chain/views/pages/profile.dart';
 
 part 'router.gr.dart';
 
@@ -16,7 +17,7 @@ class AppRouter extends _$AppRouter {
           AutoRoute(page: HomeRoute.page, path: "search"),
           AutoRoute(page: HomeRoute.page, path: "post"),
           AutoRoute(page: LoginRoute.page, path: "notifications"),
-          AutoRoute(page: LoginRoute.page, path: "profile"),
+          AutoRoute(page: UserProfileRoute.page, path: "profile"),
         ]),
         AutoRoute(page: LoginRoute.page, path: "/login"),
       ];
