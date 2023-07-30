@@ -4,8 +4,8 @@ import 'dart:convert';
 import 'package:chain/values/token.dart';
 
 abstract class ApiRepository {
-  factory ApiRepository() {
-    return ApiRepositoryHttp(get: http.get, post: http.post);
+  factory ApiRepository({Token? token}) {
+    return ApiRepositoryHttp(get: http.get, post: http.post, token: token);
   }
   Future<Token> login(String email, String password);
   Future<Map<String, dynamic>> get(String path, {Map<String, String>? headers});
@@ -13,6 +13,7 @@ abstract class ApiRepository {
 
 class ApiRepositoryHttp implements ApiRepository {
   ApiRepositoryHttp({
+    this.token,
     required get,
     required post,
   })  : _getFunc = get,
@@ -27,6 +28,8 @@ class ApiRepositoryHttp implements ApiRepository {
 
   final Future<http.Response> Function(Uri url, {Map<String, String>? headers})
       _getFunc;
+
+  final Token? token;
 
   @override
   Future<Token> login(String email, String password) async {
@@ -50,6 +53,11 @@ class ApiRepositoryHttp implements ApiRepository {
   @override
   Future<Map<String, dynamic>> get(String path,
       {Map<String, String>? headers}) async {
+    if (token != null) {
+      headers ??= {};
+      headers["Authorization"] = "JWT ${token!.access}";
+    }
+
     final response = await _getFunc(Uri.parse("http://10.0.2.2:8000/v1/$path"),
         headers: headers);
     final body = jsonDecode(response.body);

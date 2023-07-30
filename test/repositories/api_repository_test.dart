@@ -1,10 +1,15 @@
 import 'dart:convert';
 
+import 'package:chain/global.dart';
 import 'package:chain/values/token.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart';
 
 import 'package:chain/repositories/api_repository.dart';
+import 'package:mockito/mockito.dart';
+
+import '../controllers/login_controller_test.mocks.dart';
 
 typedef PostFunc = Future<Response> Function(
   Uri url, {
@@ -90,6 +95,19 @@ void getTest() {
       final api = ApiRepositoryHttp(get: getMock, post: createPostMock());
       Map<String, dynamic> response = await api.get("1");
       expect(response["key"], "value");
+    });
+
+    test('should call get with token', () async {
+      PostFunc postMock = createPostMock(
+          status: 200, bodyData: '{"access": "1", "refresh": "2"}');
+      GetFunc getMock = createGetMock(bodyData: '{"key": "value"}');
+      final token = MockToken();
+      when(token.access).thenReturn("test_token");
+      final api = ApiRepositoryHttp(token: token, get: getMock, post: postMock);
+
+      Map<String, dynamic> response = await api.get("1"); // ログイン状態でAPI呼び出し
+      expect(response["key"], "value");
+      expect(kHeaders, {"Authorization": "JWT test_token"});
     });
   });
 }
