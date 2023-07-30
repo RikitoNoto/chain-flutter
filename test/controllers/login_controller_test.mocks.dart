@@ -93,6 +93,22 @@ class MockApiRepository extends _i1.Mock implements _i4.ApiRepository {
           ),
         )),
       ) as _i5.Future<_i2.Token>);
+  @override
+  _i5.Future<Map<String, dynamic>> get(
+    String? path, {
+    Map<String, String>? headers,
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #get,
+          [path],
+          {#headers: headers},
+        ),
+        returnValue:
+            _i5.Future<Map<String, dynamic>>.value(<String, dynamic>{}),
+        returnValueForMissingStub:
+            _i5.Future<Map<String, dynamic>>.value(<String, dynamic>{}),
+      ) as _i5.Future<Map<String, dynamic>>);
 }
 
 /// A class which mocks [ProviderRef].

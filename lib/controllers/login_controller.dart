@@ -1,3 +1,4 @@
+import 'package:chain/global.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -20,7 +21,8 @@ class LoginController {
 
   Future<LoginResult> login(String email, String password) async {
     try {
-      await api.login(email, password);
+      final token = await api.login(email, password);
+      ref.read(tokenProvider.notifier).state = token;
     } on UnauthorizedException catch (_) {
       return LoginResult.invalidUser;
     }
