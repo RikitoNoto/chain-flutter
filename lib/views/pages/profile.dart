@@ -19,9 +19,9 @@ class UserProfilePage extends ConsumerWidget {
             appBar: AppBar(
               backgroundColor: Colors.white,
               elevation: 0,
-              title: const Text(
-                "User1",
-                style: TextStyle(
+              title: Text(
+                user.name ?? "",
+                style: const TextStyle(
                   color: Colors.black,
                 ),
               ),
@@ -35,24 +35,19 @@ class UserProfilePage extends ConsumerWidget {
                     // profile
                     Row(
                       children: [
-                        const Padding(
-                          padding: EdgeInsets.all(10),
+                        Padding(
+                          padding: const EdgeInsets.all(10),
                           child: CircularImage(
                             height: 60,
-                            path:
-                                "https://i0.wp.com/goodpatch.com/blog/wp-content/uploads/2013/12/octocat.png?ssl=1",
+                            path: user.thumbnail,
                           ),
                         ),
                         Flexible(
                           child: Container(
                             height: 70,
                             padding: const EdgeInsets.only(top: 10),
-                            child: const Text(
-                              "hello, i'm octocat.\n"
-                              "I'm very cute and famous.\n"
-                              "You will love me soon,\n"
-                              "because i'm very very very very very very very very very very very very very very very very very very very very very very cute.\n"
-                              "hehehe.\n",
+                            child: Text(
+                              user.description ?? "",
                               overflow: TextOverflow.fade,
                               maxLines: 7,
                             ),
