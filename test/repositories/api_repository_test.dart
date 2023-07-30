@@ -1,8 +1,6 @@
 import 'dart:convert';
 
-import 'package:chain/global.dart';
 import 'package:chain/values/token.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart';
 
