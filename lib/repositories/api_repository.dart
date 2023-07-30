@@ -8,7 +8,7 @@ abstract class ApiRepository {
     return ApiRepositoryHttp(get: http.get, post: http.post);
   }
   Future<Token> login(String email, String password);
-  Future<Map<String, dynamic>> get(String path);
+  Future<Map<String, dynamic>> get(String path, {Map<String, String>? headers});
 }
 
 class ApiRepositoryHttp implements ApiRepository {
