@@ -57,14 +57,17 @@ class UserProfilePage extends ConsumerWidget {
                     ),
 
                     // follows, followers
-                    const Padding(
-                      padding: EdgeInsets.all(10),
+                    Padding(
+                      padding: const EdgeInsets.all(10),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          _FollowFollowerButton(label: "フォロー", count: 1000),
-                          _FollowFollowerButton(label: "フォロータグ", count: 10000),
-                          _FollowFollowerButton(label: "フォロワー", count: 1000),
+                          _FollowFollowerButton(
+                              label: "フォロー", count: user.follow),
+                          _FollowFollowerButton(
+                              label: "フォロータグ", count: user.follower),
+                          _FollowFollowerButton(
+                              label: "フォロワー", count: user.followTag),
                         ],
                       ),
                     ),
