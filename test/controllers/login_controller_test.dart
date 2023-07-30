@@ -1,4 +1,5 @@
 import 'package:chain/controllers/login_controller.dart';
+import 'package:chain/global.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
@@ -30,16 +31,19 @@ class LoginControllerSpy extends LoginController {
   ApiRepository get api => _api;
 }
 
+final loginControllerSpyProvider = Provider.family((ref, ApiRepository api) {
+  return LoginControllerSpy(ref: ref, api: api);
+});
+
 void loginTest() {
   group('login test', () {
     test('should return success when login controller return token', () async {
       MockApiRepository apiMock = MockApiRepository();
-      final loginController =
-          LoginControllerSpy(api: apiMock, ref: MockProviderRef());
+      final container = ProviderContainer();
+      final controller = container.read(loginControllerSpyProvider(apiMock));
       when(apiMock.login(any, any))
           .thenAnswer((_) => Future.value(MockToken()));
-      final LoginResult result =
-          await loginController.login("email", "password");
+      final LoginResult result = await controller.login("email", "password");
       expect(result, LoginResult.success);
     });
 
@@ -53,6 +57,18 @@ void loginTest() {
       final LoginResult result =
           await loginController.login("email", "password");
       expect(result, LoginResult.invalidUser);
+    });
+
+    test('should set token when success login', () async {
+      MockApiRepository apiMock = MockApiRepository();
+      final container = ProviderContainer();
+      final controller = container.read(loginControllerSpyProvider(apiMock));
+      final mockToken = MockToken();
+      when(apiMock.login(any, any)).thenAnswer((_) => Future.value(mockToken));
+      final LoginResult result = await controller.login("email", "password");
+      expect(result, LoginResult.success);
+      final token = container.read(tokenProvider);
+      expect(mockToken, token);
     });
   });
 }

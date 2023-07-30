@@ -38,7 +38,7 @@ abstract class _$AppRouter extends RootStackRouter {
     UserProfileRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: UserProfilePage(),
+        child: const UserProfilePage(),
       );
     },
   };
