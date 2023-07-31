@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:chain/views/molecules/circular_image.dart';
+import 'package:chain/views/molecules/knowledge_card.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
 
@@ -104,7 +105,17 @@ class UserProfilePage extends ConsumerWidget {
                           ),
                           child: const TabBarView(
                             children: [
-                              Center(child: Text('Home Content')),
+                              Center(
+                                child: KnowledgeCard(
+                                  title: "title",
+                                  content: "contentcontent\ncontentconten",
+                                  favoriteCount: 1000,
+                                  tags: [
+                                    "Python",
+                                    "標準出力",
+                                  ],
+                                ),
+                              ),
                               Center(child: Text('Search Content')),
                             ],
                           ),
