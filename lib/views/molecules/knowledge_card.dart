@@ -2,8 +2,17 @@ import 'package:flutter/material.dart';
 
 class KnowledgeCard extends StatelessWidget {
   const KnowledgeCard({
+    this.title = "",
+    required this.content,
+    required this.favoriteCount,
+    this.tags = const [],
     super.key,
   });
+
+  final String title;
+  final String content;
+  final int favoriteCount;
+  final List<String> tags;
 
   @override
   Widget build(BuildContext context) {
@@ -19,35 +28,34 @@ class KnowledgeCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Title",
+                  title,
                   style: Theme.of(context).textTheme.titleLarge,
                   maxLines: 1,
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  "contentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontent",
+                  content,
                   style: Theme.of(context).textTheme.bodyLarge,
                 ),
-                const Wrap(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(right: 4.0),
-                      child: Chip(
-                        label: Text("Python"),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(right: 4.0),
-                      child: Chip(
-                        label: Text("標準出力"),
-                      ),
-                    ),
-                  ],
+                Wrap(
+                  children: tags
+                      .map(
+                        (tag) => Padding(
+                          padding: const EdgeInsets.only(right: 4.0),
+                          child: Chip(
+                            label: Text(
+                              tag,
+                              style: const TextStyle(fontSize: 12),
+                            ),
+                          ),
+                        ),
+                      )
+                      .toList(),
                 ),
                 Row(
                   children: [
-                    Icon(Icons.star_border),
-                    Text("1199"),
+                    const Icon(Icons.star_border),
+                    Text(favoriteCount.toString()),
                   ],
                 )
               ],

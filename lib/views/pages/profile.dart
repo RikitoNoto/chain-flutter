@@ -106,7 +106,15 @@ class UserProfilePage extends ConsumerWidget {
                           child: const TabBarView(
                             children: [
                               Center(
-                                child: KnowledgeCard(),
+                                child: KnowledgeCard(
+                                  title: "title",
+                                  content: "contentcontent\ncontentconten",
+                                  favoriteCount: 1000,
+                                  tags: [
+                                    "Python",
+                                    "標準出力",
+                                  ],
+                                ),
                               ),
                               Center(child: Text('Search Content')),
                             ],
