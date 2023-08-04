@@ -14,7 +14,7 @@ class MainPage extends StatelessWidget {
         const HomeRoute(),
         LoginRoute(),
         const HomeRoute(), // dummy
-        const HomeRoute(),
+        const DevRoute(),
         const UserProfileRoute(),
       ],
       builder: (context, child) {
