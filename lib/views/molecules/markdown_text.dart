@@ -21,9 +21,7 @@ class MarkdownText extends StatelessWidget {
               (!await launchUrl(
                 Uri.parse(href),
                 mode: LaunchMode.externalApplication,
-              ))) {
-            print("fail");
-          }
+              ))) {}
         },
         data: "# markdownSource\n"
             "hello.\n"
