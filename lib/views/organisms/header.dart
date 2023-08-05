@@ -9,7 +9,6 @@ class Header extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       elevation: 0,
-      backgroundColor: Colors.white,
       title: Row(
         children: [
           SizedBox(
@@ -21,7 +20,6 @@ class Header extends StatelessWidget implements PreferredSizeWidget {
             child: Text(
               "Chain",
               style: TextStyle(
-                color: Color(0xFFFA8072),
                 fontWeight: FontWeight.bold,
               ),
             ),

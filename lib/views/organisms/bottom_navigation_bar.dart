@@ -14,10 +14,8 @@ class ChainNavigationBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return NavigationBar(
       labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
-      backgroundColor: Colors.white,
       selectedIndex: selectedIndex,
       height: kBottomNavigationBarHeight,
-      indicatorColor: Colors.white,
       destinations: [
         _buildDestinationIcon(
           Icons.home,
@@ -26,13 +24,13 @@ class ChainNavigationBar extends StatelessWidget {
           Icons.search,
         ),
         Ink(
-          decoration: const BoxDecoration(
-            color: Color(0xFFFFA07A),
+          decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.primary,
             shape: BoxShape.circle,
           ),
           child: IconButton(
             splashRadius: 25,
-            color: Colors.white,
+            color: Theme.of(context).colorScheme.onPrimary,
             icon: const Icon(Icons.post_add),
             onPressed: () => {},
           ),
@@ -53,11 +51,9 @@ class ChainNavigationBar extends StatelessWidget {
     return NavigationDestination(
       selectedIcon: Icon(
         icon,
-        color: const Color(0xFF505050),
       ),
       icon: Icon(
         icon,
-        color: const Color(0xFFB0B0B0),
       ),
       label: label,
     );

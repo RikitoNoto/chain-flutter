@@ -13,7 +13,6 @@ class DevPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return const Scaffold(
       appBar: Header(),
-      backgroundColor: Color(0xFFE6E6E6),
       body: MarkdownText(),
     );
   }

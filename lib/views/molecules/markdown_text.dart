@@ -58,27 +58,25 @@ class _Pre extends StatelessWidget {
             Container(
               width: double.infinity,
               decoration: BoxDecoration(
-                color: Colors.black,
+                color: Theme.of(context).colorScheme.onBackground,
                 borderRadius: BorderRadius.circular(4),
               ),
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(20, 20, 20, 4),
                 child: SelectableText(
                   text,
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodySmall
-                      ?.copyWith(color: Colors.white),
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                      color: Theme.of(context).colorScheme.background),
                 ),
               ),
             ),
             IconButton(
               onPressed: () => Clipboard.setData(ClipboardData(text: text)),
               tooltip: 'クリップボードにコピー',
-              icon: const Icon(
+              icon: Icon(
                 Icons.content_copy_outlined,
                 size: 20,
-                color: Colors.white,
+                color: Theme.of(context).colorScheme.background,
               ),
             ),
           ],
