@@ -1,0 +1,24 @@
+{
+  "markdown": {
+    "copy": "クリップボードにコピー"
+  },
+  "home": {
+    "noKnowledge": "ユーザーやタグをフォローしましょう"
+  },
+  "login": {
+    "email": "メールアドレス",
+    "password": "パスワード",
+    "login": "ログイン",
+    "fail": "メールアドレスかパスワードが間違っています"
+  },
+  "profile": {
+    "follow": "フォロー",
+    "follower": "フォロワー",
+    "followTag": "フォロータグ",
+    "post": "投稿",
+    "favorite": "お気に入り",
+    "fail": {
+      "connection": "通信に失敗しました"
+    }
+  }
+}

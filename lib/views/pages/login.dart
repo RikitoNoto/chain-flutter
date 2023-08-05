@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'package:chain/i18n/strings.g.dart';
 import 'package:chain/views/molecules/borderless_text_field.dart';
 import 'package:chain/controllers/login_controller.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -37,7 +38,7 @@ class LoginPage extends ConsumerWidget {
               _buildTextField(
                 name: "email",
                 contentWidth: contentWidth,
-                labelText: "メールアドレス",
+                labelText: t.login.email,
                 validator: FormBuilderValidators.compose([
                   FormBuilderValidators.required(),
                   FormBuilderValidators.email(),
@@ -46,7 +47,7 @@ class LoginPage extends ConsumerWidget {
               _buildTextField(
                 name: "password",
                 contentWidth: contentWidth,
-                labelText: "パスワード",
+                labelText: t.login.password,
                 obscureText: !ref.watch(passwordVisibleProvider),
                 suffixIcon: IconButton(
                   splashRadius: 0.1,
@@ -79,13 +80,13 @@ class LoginPage extends ConsumerWidget {
                               _formKey.currentState?.value['password']);
                       if (result == LoginResult.invalidUser) {
                         ref.read(errorMessageProvider.notifier).state =
-                            "メールアドレスかパスワードが間違っています。";
+                            t.login.fail;
                       }
                     }
                   },
-                  child: const Text(
-                    "ログイン",
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                  child: Text(
+                    t.login.login,
+                    style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
               ),
