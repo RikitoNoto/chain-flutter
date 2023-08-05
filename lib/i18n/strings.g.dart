@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 8 (4 per locale)
+/// Strings: 24 (12 per locale)
 ///
-/// Built on 2023-08-05 at 06:41 UTC
+/// Built on 2023-08-05 at 07:22 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -150,9 +150,30 @@ class _StringsEn implements BaseTranslations<AppLocale, _StringsEn> {
 	late final _StringsEn _root = this; // ignore: unused_field
 
 	// Translations
-	String hello({required Object name}) => 'Hello ${name}';
-	String get save => 'Save';
+	late final _StringsMarkdownEn markdown = _StringsMarkdownEn._(_root);
+	late final _StringsHomeEn home = _StringsHomeEn._(_root);
 	late final _StringsLoginEn login = _StringsLoginEn._(_root);
+	late final _StringsProfileEn profile = _StringsProfileEn._(_root);
+}
+
+// Path: markdown
+class _StringsMarkdownEn {
+	_StringsMarkdownEn._(this._root);
+
+	final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	String get copy => 'Copy to clipboard';
+}
+
+// Path: home
+class _StringsHomeEn {
+	_StringsHomeEn._(this._root);
+
+	final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	String get noKnowledge => 'Let\'s you follow users and tags';
 }
 
 // Path: login
@@ -162,8 +183,35 @@ class _StringsLoginEn {
 	final _StringsEn _root; // ignore: unused_field
 
 	// Translations
-	String get success => 'Logged in successfully';
-	String get fail => 'Logged in failed';
+	String get email => 'Email';
+	String get password => 'Password';
+	String get login => 'Login';
+	String get fail => 'Logged in failed.\nEmail or Password aren\'t correct.';
+}
+
+// Path: profile
+class _StringsProfileEn {
+	_StringsProfileEn._(this._root);
+
+	final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	String get follow => 'Follow';
+	String get follower => 'Follower';
+	String get followTag => 'Follo Tag';
+	String get post => 'Post';
+	String get favorite => 'Favorite';
+	late final _StringsProfileFailEn fail = _StringsProfileFailEn._(_root);
+}
+
+// Path: profile.fail
+class _StringsProfileFailEn {
+	_StringsProfileFailEn._(this._root);
+
+	final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	String get connect => 'Failed to connect';
 }
 
 // Path: <root>
@@ -191,9 +239,30 @@ class _StringsJp implements _StringsEn {
 	@override late final _StringsJp _root = this; // ignore: unused_field
 
 	// Translations
-	@override String hello({required Object name}) => 'こんにちは ${name}';
-	@override String get save => '保存';
+	@override late final _StringsMarkdownJp markdown = _StringsMarkdownJp._(_root);
+	@override late final _StringsHomeJp home = _StringsHomeJp._(_root);
 	@override late final _StringsLoginJp login = _StringsLoginJp._(_root);
+	@override late final _StringsProfileJp profile = _StringsProfileJp._(_root);
+}
+
+// Path: markdown
+class _StringsMarkdownJp implements _StringsMarkdownEn {
+	_StringsMarkdownJp._(this._root);
+
+	@override final _StringsJp _root; // ignore: unused_field
+
+	// Translations
+	@override String get copy => 'クリップボードにコピー';
+}
+
+// Path: home
+class _StringsHomeJp implements _StringsHomeEn {
+	_StringsHomeJp._(this._root);
+
+	@override final _StringsJp _root; // ignore: unused_field
+
+	// Translations
+	@override String get noKnowledge => 'ユーザーやタグをフォローしましょう';
 }
 
 // Path: login
@@ -203,8 +272,35 @@ class _StringsLoginJp implements _StringsLoginEn {
 	@override final _StringsJp _root; // ignore: unused_field
 
 	// Translations
-	@override String get success => 'ログインしました';
-	@override String get fail => 'ログインに失敗しました';
+	@override String get email => 'メールアドレス';
+	@override String get password => 'パスワード';
+	@override String get login => 'ログイン';
+	@override String get fail => 'メールアドレスかパスワードが間違っています';
+}
+
+// Path: profile
+class _StringsProfileJp implements _StringsProfileEn {
+	_StringsProfileJp._(this._root);
+
+	@override final _StringsJp _root; // ignore: unused_field
+
+	// Translations
+	@override String get follow => 'フォロー';
+	@override String get follower => 'フォロワー';
+	@override String get followTag => 'フォロータグ';
+	@override String get post => '投稿';
+	@override String get favorite => 'お気に入り';
+	@override late final _StringsProfileFailJp fail = _StringsProfileFailJp._(_root);
+}
+
+// Path: profile.fail
+class _StringsProfileFailJp implements _StringsProfileFailEn {
+	_StringsProfileFailJp._(this._root);
+
+	@override final _StringsJp _root; // ignore: unused_field
+
+	// Translations
+	@override String get connection => '通信に失敗しました';
 }
 
 /// Flat map(s) containing all translations.
@@ -213,10 +309,18 @@ class _StringsLoginJp implements _StringsLoginEn {
 extension on _StringsEn {
 	dynamic _flatMapFunction(String path) {
 		switch (path) {
-			case 'hello': return ({required Object name}) => 'Hello ${name}';
-			case 'save': return 'Save';
-			case 'login.success': return 'Logged in successfully';
-			case 'login.fail': return 'Logged in failed';
+			case 'markdown.copy': return 'Copy to clipboard';
+			case 'home.noKnowledge': return 'Let\'s you follow users and tags';
+			case 'login.email': return 'Email';
+			case 'login.password': return 'Password';
+			case 'login.login': return 'Login';
+			case 'login.fail': return 'Logged in failed.\nEmail or Password aren\'t correct.';
+			case 'profile.follow': return 'Follow';
+			case 'profile.follower': return 'Follower';
+			case 'profile.followTag': return 'Follo Tag';
+			case 'profile.post': return 'Post';
+			case 'profile.favorite': return 'Favorite';
+			case 'profile.fail.connect': return 'Failed to connect';
 			default: return null;
 		}
 	}
@@ -225,10 +329,18 @@ extension on _StringsEn {
 extension on _StringsJp {
 	dynamic _flatMapFunction(String path) {
 		switch (path) {
-			case 'hello': return ({required Object name}) => 'こんにちは ${name}';
-			case 'save': return '保存';
-			case 'login.success': return 'ログインしました';
-			case 'login.fail': return 'ログインに失敗しました';
+			case 'markdown.copy': return 'クリップボードにコピー';
+			case 'home.noKnowledge': return 'ユーザーやタグをフォローしましょう';
+			case 'login.email': return 'メールアドレス';
+			case 'login.password': return 'パスワード';
+			case 'login.login': return 'ログイン';
+			case 'login.fail': return 'メールアドレスかパスワードが間違っています';
+			case 'profile.follow': return 'フォロー';
+			case 'profile.follower': return 'フォロワー';
+			case 'profile.followTag': return 'フォロータグ';
+			case 'profile.post': return '投稿';
+			case 'profile.favorite': return 'お気に入り';
+			case 'profile.fail.connection': return '通信に失敗しました';
 			default: return null;
 		}
 	}

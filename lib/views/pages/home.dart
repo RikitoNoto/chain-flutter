@@ -1,3 +1,4 @@
+import 'package:chain/i18n/strings.g.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -10,12 +11,12 @@ class HomePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return const Scaffold(
-      appBar: Header(),
+    return Scaffold(
+      appBar: const Header(),
       body: Center(
         child: Text(
-          "ユーザーやタグをフォローして、\n知識を表示しましょう",
-          style: TextStyle(),
+          t.home.noKnowledge,
+          style: const TextStyle(),
         ),
       ),
     );

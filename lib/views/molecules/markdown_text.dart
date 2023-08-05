@@ -1,3 +1,4 @@
+import 'package:chain/i18n/strings.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:markdown/markdown.dart' as md;
@@ -72,7 +73,7 @@ class _Pre extends StatelessWidget {
             ),
             IconButton(
               onPressed: () => Clipboard.setData(ClipboardData(text: text)),
-              tooltip: 'クリップボードにコピー',
+              tooltip: t.markdown.copy,
               icon: Icon(
                 Icons.content_copy_outlined,
                 size: 20,

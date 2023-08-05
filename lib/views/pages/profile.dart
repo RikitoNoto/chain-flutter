@@ -4,6 +4,7 @@ import 'package:chain/views/molecules/knowledge_card.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
 
+import 'package:chain/i18n/strings.g.dart';
 import 'package:chain/controllers/profile_controller.dart';
 
 @RoutePage()
@@ -59,18 +60,18 @@ class UserProfilePage extends ConsumerWidget {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           _FollowFollowerButton(
-                              label: "フォロー", count: user.follow),
+                              label: t.profile.follow, count: user.follow),
                           _FollowFollowerButton(
-                              label: "フォロータグ", count: user.follower),
+                              label: t.profile.followTag, count: user.follower),
                           _FollowFollowerButton(
-                              label: "フォロワー", count: user.followTag),
+                              label: t.profile.follower, count: user.followTag),
                         ],
                       ),
                     ),
                   ],
                 ),
                 // post, favorite pain
-                const DefaultTabController(
+                DefaultTabController(
                   length: 2, // タブの数
                   child: Flexible(
                     child: Column(
@@ -80,18 +81,18 @@ class UserProfilePage extends ConsumerWidget {
                             Tab(
                               height: 30,
                               child: Text(
-                                '投稿',
+                                t.profile.post,
                               ),
                             ),
                             Tab(
                               height: 30,
                               child: Text(
-                                'お気に入り',
+                                t.profile.favorite,
                               ),
                             ),
                           ],
                         ),
-                        Flexible(
+                        const Flexible(
                           child: TabBarView(
                             children: [
                               Center(
@@ -117,8 +118,8 @@ class UserProfilePage extends ConsumerWidget {
             ),
           ),
           loading: () => const Center(child: CircularProgressIndicator()),
-          error: (error, stackTrace) => const Center(
-            child: Text('通信に失敗しました。'),
+          error: (error, stackTrace) => Center(
+            child: Text(t.profile.fail.connect),
           ),
         );
   }

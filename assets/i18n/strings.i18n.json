@@ -1,8 +1,24 @@
 {
-  "hello": "Hello $name",
-  "save": "Save",
+  "markdown": {
+    "copy": "Copy to clipboard"
+  },
+  "home": {
+    "noKnowledge": "Let's you follow users and tags"
+  },
   "login": {
-    "success": "Logged in successfully",
-    "fail": "Logged in failed"
+    "email": "Email",
+    "password": "Password",
+    "login": "Login",
+    "fail": "Logged in failed.\nEmail or Password aren't correct."
+  },
+  "profile": {
+    "follow": "Follow",
+    "follower": "Follower",
+    "followTag": "Follo Tag",
+    "post": "Post",
+    "favorite": "Favorite",
+    "fail": {
+      "connect": "Failed to connect"
+    }
   }
 }
