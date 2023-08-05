@@ -18,8 +18,7 @@ class KnowledgeCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        Container(
-          decoration: const BoxDecoration(color: Colors.white),
+        SizedBox(
           width: MediaQuery.of(context).size.width,
           child: Padding(
             padding:

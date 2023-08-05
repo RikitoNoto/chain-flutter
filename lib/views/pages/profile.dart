@@ -14,20 +14,15 @@ class UserProfilePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // ref.watch(jobFutureProvider(jobId)).when();
     return ref.watch(fetchProfileProvider).when(
           data: (user) => Scaffold(
             appBar: AppBar(
-              backgroundColor: Colors.white,
               elevation: 0,
               title: Text(
                 user.name ?? "",
-                style: const TextStyle(
-                  color: Colors.black,
-                ),
+                style: const TextStyle(),
               ),
             ),
-            backgroundColor: Colors.white,
             body: Column(
               children: [
                 //profile pain
@@ -75,35 +70,29 @@ class UserProfilePage extends ConsumerWidget {
                   ],
                 ),
                 // post, favorite pain
-                DefaultTabController(
+                const DefaultTabController(
                   length: 2, // タブの数
                   child: Flexible(
                     child: Column(
                       children: [
-                        const TabBar(
+                        TabBar(
                           tabs: [
                             Tab(
                               height: 30,
                               child: Text(
                                 '投稿',
-                                style: TextStyle(color: Colors.black),
                               ),
                             ),
                             Tab(
                               height: 30,
                               child: Text(
                                 'お気に入り',
-                                style: TextStyle(color: Colors.black),
                               ),
                             ),
                           ],
                         ),
                         Flexible(
-                            child: Container(
-                          decoration: const BoxDecoration(
-                            color: Color(0xFFF1F1F1),
-                          ),
-                          child: const TabBarView(
+                          child: TabBarView(
                             children: [
                               Center(
                                 child: KnowledgeCard(
@@ -119,7 +108,7 @@ class UserProfilePage extends ConsumerWidget {
                               Center(child: Text('Search Content')),
                             ],
                           ),
-                        )),
+                        ),
                       ],
                     ),
                   ),

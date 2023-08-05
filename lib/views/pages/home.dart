@@ -12,13 +12,10 @@ class HomePage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return const Scaffold(
       appBar: Header(),
-      backgroundColor: Color(0xFFE6E6E6),
       body: Center(
         child: Text(
           "ユーザーやタグをフォローして、\n知識を表示しましょう",
-          style: TextStyle(
-            color: Color(0xFF909090),
-          ),
+          style: TextStyle(),
         ),
       ),
     );

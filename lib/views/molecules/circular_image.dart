@@ -20,18 +20,11 @@ class CircularImage extends StatelessWidget {
 
     final icon = backgroundImage == null ? const Icon(Icons.face) : null;
 
-    return Container(
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        border:
-            Border.all(color: Colors.grey.shade100, width: isBorder ? 2 : 0),
-      ),
-      child: CircleAvatar(
-        maxRadius: height / 2,
-        backgroundColor: Theme.of(context).cardColor,
-        backgroundImage: backgroundImage,
-        child: icon,
-      ),
+    return CircleAvatar(
+      maxRadius: height / 2,
+      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundImage: backgroundImage,
+      child: icon,
     );
   }
 }
