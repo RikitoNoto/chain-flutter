@@ -16,8 +16,14 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       routerConfig: _appRouter.config(),
-      theme: ThemeData(useMaterial3: true, colorScheme: lightColorScheme),
-      darkTheme: ThemeData(useMaterial3: true, colorScheme: darkColorScheme),
+      theme: ThemeData(
+          useMaterial3: true,
+          colorScheme: lightColorScheme,
+          fontFamily: "Noto_Sans_JP"),
+      darkTheme: ThemeData(
+          useMaterial3: true,
+          colorScheme: darkColorScheme,
+          fontFamily: "Noto_Sans_JP"),
     );
   }
 }
